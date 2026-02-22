@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Painel Gamer</title>
+
+<style>
+body{
+    background:#0f0f0f;
+    font-family:Arial, sans-serif;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.painel{
+    width:360px;
+    background:#141414;
+    border:2px solid #ff0000;
+    border-radius:15px;
+    box-shadow:0 0 25px #ff0000;
+    padding:15px;
+}
+
+.topo{
+    text-align:center;
+    font-weight:bold;
+    font-size:18px;
+    color:#ff0000;
+    margin-bottom:12px;
+}
+
+.tabs{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+}
+
+.tab{
+    flex:1;
+    margin:3px;
+    padding:8px;
+    background:#1c1c1c;
+    border:1px solid #ff0000;
+    text-align:center;
+    cursor:pointer;
+    border-radius:8px;
+    font-size:14px;
+}
+
+.tab.active{
+    background:#ff0000;
+}
+
+.content{
+    display:none;
+}
+
+.content.active{
+    display:block;
+}
+
+.option{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:8px 0;
+    background:#1c1c1c;
+    padding:8px;
+    border-radius:8px;
+}
+
+.toggle{
+    background:#333;
+    border:none;
+    color:white;
+    padding:5px 10px;
+    border-radius:6px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.toggle.on{
+    background:#00ff00;
+    color:black;
+}
+</style>
+</head>
+<body>
+
+<div class="painel">
+    <div class="topo">PAINEL FUTURISTA</div>
+
+    <div class="tabs">
+        <div class="tab active" onclick="openTab('aim', this)">AIM</div>
+        <div class="tab" onclick="openTab('esp', this)">ESP</div>
+        <div class="tab" onclick="openTab('misc', this)">MISC</div>
+        <div class="tab" onclick="openTab('info', this)">INFO</div>
+    </div>
+
+    <!-- AIM -->
+    <div id="aim" class="content active">
+        <div class="option">Ativar Aimbot <button class="toggle" onclick="toggle(this)">OFF</button></div>
+        <div class="option">Puxar Capa <button class="toggle" onclick="toggle(this)">OFF</button></div>
+        <div class="option">Regular FOV <button class="toggle" onclick="toggle(this)">OFF</button></div>
+    </div>
+
+    <!-- ESP -->
+    <div id="esp" class="content">
+        <div class="option">ESP Player <button class="toggle" onclick="toggle(this)">OFF</button></div>
+        <div class="option">ESP Caixa <button class="toggle" onclick="toggle(this)">OFF</button></div>
+        <div class="option">Exibir FOV <button class="toggle" onclick="toggle(this)">OFF</button></div>
+    </div>
+
+    <!-- MISC -->
+    <div id="misc" class="content">
+        <div class="option">Forçar 120FPS <button class="toggle" onclick="toggle(this)">OFF</button></div>
+        <div class="option">Anti Lag <button class="toggle" onclick="toggle(this)">OFF</button></div>
+        <div class="option">Modo Performance <button class="toggle" onclick="toggle(this)">OFF</button></div>
+    </div>
+
+    <!-- INFO -->
+    <div id="info" class="content">
+        <div class="option">Versão: 1.0</div>
+        <div class="option">Status: Visual</div>
+        <div class="option">Desenvolvido por: Pedro</div>
+    </div>
+
+</div>
+
+<script>
+function openTab(tabName, element){
+    let contents = document.querySelectorAll('.content');
+    let tabs = document.querySelectorAll('.tab');
+
+    contents.forEach(c => c.classList.remove('active'));
+    tabs.forEach(t => t.classList.remove('active'));
+
+    document.getElementById(tabName).classList.add('active');
+    element.classList.add('active');
+}
+
+function toggle(btn){
+    if(btn.classList.contains("on")){
+        btn.classList.remove("on");
+        btn.innerText = "OFF";
+    } else {
+        btn.classList.add("on");
+        btn.innerText = "ON";
+    }
+}
+</script>
+
+</body>
+</html>
